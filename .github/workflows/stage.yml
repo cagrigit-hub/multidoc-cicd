@@ -51,6 +51,7 @@ jobs:
 
 
   create_eb_version:
+    needs: [build_docker]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
