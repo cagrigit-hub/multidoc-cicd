@@ -6,6 +6,11 @@ import styles from '@/styles/Home.module.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const handleClick = async () => {
+    const res = await fetch('/backend')
+    const json = await res.json()
+    console.log(json)
+  }
   return (
     <>
       <Head>
@@ -14,7 +19,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+      <main onClick={handleClick} className={styles.main}>
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
