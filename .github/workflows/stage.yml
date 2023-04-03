@@ -1,4 +1,4 @@
-name: Stage - Deploy Nestjs App to AWS Elastic Beanstalk
+name: Stage - Deploy to AWS
 
 env:
   APP_NAME: Multidoc-cicd
@@ -33,21 +33,21 @@ jobs:
           context: ./api
           file: ./api/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/multidoc-backend:${{ env.PIPELINE_ID }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/multidoc-backend:latest
       - name: Build and push web
         uses: docker/build-push-action@v2
         with:
           context: ./web
           file: ./web/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/multidoc-web:${{ env.PIPELINE_ID }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/multidoc-web:latest
       - name: Build and push nginx
         uses: docker/build-push-action@v2
         with:
           context: ./nginx
           file: ./nginx/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/multidoc-nginx:${{ env.PIPELINE_ID }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/multidoc-nginx:latest
 
 
   create_eb_version:
