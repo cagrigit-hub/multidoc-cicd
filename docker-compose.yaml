@@ -1,11 +1,14 @@
 version: '3'
 services:
   nginx:
-    image: nginx
+    image: cakitomakito/multidoc-nginx
+    hostname: nginx
     ports:
       - 80:80
   backend:
     image: cakitomakito/multidoc-backend
+    hostname: backend
   web:
     image: cakitomakito/multidoc-web
+    hostname: web
 
